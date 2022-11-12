@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Atividade Javascript</title>
+      <h1>#Atividades Javascript</h1>
+    <style>
+      body{ font-family: 'Courier New', Courier, monospace;
+    background-color: powderblue;}
+h1   {color: blue;}
+p   { color: red;}
+p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+li{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: red;
+}
+    </style>
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+
+</head>
+
+<body>
+
+  <section>
+
+    <header>
+           <h2><mark>Atividade 1</mark></h2>
+      <div><h1>Media Alunos</h1></div>
+
+    </header>
+
+    <p>Nota1:
+      <input type="text" id="nota1">
+    </p>
+    <p>Nota2:
+      <input type="text" id="nota2">
+    </p>
+    <p>Média:<span id="media"></span></p>
+    <p>Situação:<span id="situacao"></span></p>
+
+    <button onclick="verificaSituacao()">
+      Verificar
+    </button>
+
+    <script>
+
+      function verificaSituacao() {
+
+        let n1 = parseFloat(document.getElementById("nota1").value);
+        let n2 = parseFloat(document.getElementById("nota2").value);
+
+        let media = (n1 + n2) / 2;
+        let situacao = "";
+        let cor = "";
+        if (media >= 6) {
+          situacao = 'Aprovado';
+          cor = 'blue';
+        } else {
+          // && = AND  -   || = OR
+          if (media >= 2 && media < 6) {
+            situacao = "Exame Final";
+            cor = 'orange';
+          } else {
+            situacao = 'Reprovado';
+            cor = 'red';
+          }
+        }
+
+        document.getElementById("media").innerHTML = media;
+        document.getElementById("situacao").innerHTML = situacao;
+        document.getElementById("situacao").style.color = cor;
+
+      }
+
+    </script>
+
+  </section>
+
+  <section>
+
+    <header>
+            <h2><mark>Atividade 2 </mark></h2>
+      <div><h1>Indice De Massa Corporal</h1></div>
+
+    </header>
+
+    <p>Peso (kg): <input type="text" id="kg"></p>
+    <p>Altura (m): <input type="text" id="m"></p>
+    <button id="calc">Calcular</button>
+    <p>IMC: <span id="imc"></span></p>
+    <p>Resultado: <span id="resultado"></span></p>
+
+    <script type="text/javascript">
+      calc = document.getElementById("calc");
+      kg = document.getElementById("kg");
+      m = document.getElementById("m");
+      imc = document.getElementById("imc");
+      lectura = document.getElementById("resultado");
+
+      calc.onclick = function () {
+        if (kg.value != "" && m.value != "") {
+          imcx = (kg.value / (m.value * m.value));
+          imc.innerHTML = imcx
+          console.log(imcx);
+
+          let situacao = "";
+          let cor = "";
+
+          if (imcx < 18.5) {
+            situacao = "Peso inferior ao normal";
+            cor = "red";
+          }
+          else if (imcx >= 18.5 && imcx <= 24.9) {
+            situacao = "Peso normal";
+            cor = "green";
+          }
+          else if (imcx >= 25 && imcx <= 29.9) {
+            situacao = "Peso superior ao normal";
+            cor = "orange";
+          }
+          else if (imcx > 30) {
+            situacao = "Obesidade";
+            cor = "red";
+          }
+
+          document.getElementById("resultado").innerHTML = situacao;
+          document.getElementById("resultado").style.color = cor;
+
+        } else {
+          alert("Deve inserir peso e altura.")
+        }
+
+      };
+    </script>
+
+  </section>
+
+  <section>
+
+    <header>
+         <h2><mark>Atividade 3</mark></h2>
+      <div><h1>Materiais De construçao</h1></div>
+
+    </header>
+
+    <ul id="mylist">
+
+      <li>cimento</li>
+      <li>areia</li>
+      <li>tijolo</li>
+
+
+    </ul>
+
+    <input type="text" id="entrada" value="">
+
+    <br>
+
+    <input type="radio" name="cores" style="color: blue" value="blue">azul</input>
+    <input type="radio" name="cores" style="color: purple" value="purple">roxo</input>
+    <input type="radio" name="cores" style="color: orangered" value="orange">laranja</input>
+
+    <br>
+
+    <button onclick="myFunction()">Adicionar</button>
+
+    <script>
+      element.addEventListener("click", myFunction);
+      function myFunction() {
+        const texto = document.getElementById("entrada").value;
+        const node = document.createElement("li");
+        const textnode = document.createTextNode(texto);
+        node.appendChild(textnode);
+        document.getElementById("mylist").appendChild(node);
+
+        let cor = "";
+        cor = document.querySelector('input[name="cores"]:checked').value
+        node.style.color = cor
+      }
+
+    </script>
+
+  </section>
+
+  <footer></footer>
+</body>
+
+</html>
